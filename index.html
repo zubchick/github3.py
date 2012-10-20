@@ -1,0 +1,169 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <title>Github3.py by sigmavirus24</title>
+
+    <link rel="stylesheet" href="stylesheets/styles.css">
+    <link rel="stylesheet" href="stylesheets/pygment_trac.css">
+    <script src="javascripts/scale.fix.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+    <div class="wrapper">
+      <header>
+        <h1 class="header">Github3.py</h1>
+        <p class="header">Python library for interfacing with the GitHub APIv3</p>
+
+        <ul>
+          <li class="download"><a class="buttons" href="https://github.com/sigmavirus24/github3.py/zipball/master">Download ZIP</a></li>
+          <li class="download"><a class="buttons" href="https://github.com/sigmavirus24/github3.py/tarball/master">Download TAR</a></li>
+          <li><a class="buttons github" href="https://github.com/sigmavirus24/github3.py">View On GitHub</a></li>
+        </ul>
+
+        <p class="header">This project is maintained by <a class="header name" href="https://github.com/sigmavirus24">sigmavirus24</a></p>
+
+
+      </header>
+      <section>
+        <h1>github3.py</h1>
+
+<p>.. image::
+    <a href="https://secure.travis-ci.org/sigmavirus24/github3.py.png?branch=mock">https://secure.travis-ci.org/sigmavirus24/github3.py.png?branch=mock</a>
+    :alt: Build Status
+    :target: <a href="http://travis-ci.org/sigmavirus24/github3.py">http://travis-ci.org/sigmavirus24/github3.py</a></p>
+
+<p>github3.py is a comprehensive, actively developed and extraordinarily stable 
+wrapper around the GitHub API (v3).</p>
+
+<p>See HISTORY.rst for any "breaking" changes.</p>
+
+<h2>Installation</h2>
+
+<p>::</p>
+
+<pre><code>$ pip install github3.py
+</code></pre>
+
+<h2>Dependencies</h2>
+
+<ul>
+<li>requests_  by Kenneth Reitz</li>
+</ul><p>.. _requests: <a href="https://github.com/kennethreitz/requests">https://github.com/kennethreitz/requests</a></p>
+
+<p>Testing</p>
+
+<pre><code>
+- expecter_ by Gary Bernhardt
+- mock_ by Michael Foord
+- coverage_ by Ned Batchelder
+
+.. _expecter: https://github.com/garybernhardt/expecter
+.. _coverage: http://nedbatchelder.com/code/coverage/
+.. _mock: http://mock.readthedocs.org/en/latest/
+
+License
+-------
+
+Modified BSD license_
+
+.. _license:
+
+Examples
+--------
+
+See the docs_ for more detailed examples.
+
+.. _docs: http://github3py.readthedocs.org/en/latest/index.html#more-examples
+
+Create a git blob:
+
+::
+
+  &gt;&gt;&gt; from github3 import login
+  &gt;&gt;&gt; g = login(username, password)
+  &gt;&gt;&gt; repo = g.repository('sigmavirus24', 'Todo.txt-python')
+  &gt;&gt;&gt; sha = repo.create_blob('Testing blob creation', 'utf-8')
+  &gt;&gt;&gt; sha
+  u'57fad9a39b27e5eb4700f66673ce860b65b93ab8'
+  &gt;&gt;&gt; blob = repo.blob(sha)
+  &gt;&gt;&gt; blob.content
+  u'VGVzdGluZyBibG9iIGNyZWF0aW9u\n'
+  &gt;&gt;&gt; blob.decoded
+  u'Testing blob creation'
+  &gt;&gt;&gt; blob.encoding
+  u'base64'
+
+Create a tag on a commit:
+
+::
+
+  &gt;&gt;&gt; from github3 import login
+  &gt;&gt;&gt; g = login(username, password)
+  &gt;&gt;&gt; repo = g.repository('sigmavirus24', 'github3.py')
+  &gt;&gt;&gt; tag = repo.tag('cdba84b4fede2c69cb1ee246b33f49f19475abfa')
+  &gt;&gt;&gt; tag
+  &lt;Tag [cdba84b4fede2c69cb1ee246b33f49f19475abfa]&gt;
+  &gt;&gt;&gt; tag.object.sha
+  u'24ea44d302c6394a0372dcde8fd8aed899c0034b'
+  &gt;&gt;&gt; tag.object.type
+  u'commit'
+
+Testing
+</code></pre>
+
+<p>::</p>
+
+<pre><code>make tests
+</code></pre>
+
+<p>These coverage numbers are from the old-style tests and still apply to master.</p>
+
+<p>::</p>
+
+<pre><code>Name                 Stmts   Miss  Cover
+----------------------------------------
+github3/__init__         8      0   100%
+github3/api             54      1    98%
+github3/auths           50      0   100%
+github3/decorators      27      0   100%
+github3/events          89      0   100%
+github3/gists          101      0   100%
+github3/git             93      0   100%
+github3/github         374      0   100%
+github3/issues         204      0   100%
+github3/legacy          97      0   100%
+github3/models         189      0   100%
+github3/orgs           177      0   100%
+github3/pulls          138      6    96%
+github3/repos          790     22    97%
+github3/users          160      0   100%
+----------------------------------------
+TOTAL                 2551     29    99%
+</code></pre>
+
+<h2>Author</h2>
+
+<p>Ian Cordasco (sigmavirus24)</p>
+
+<h2>Contact Options</h2>
+
+<ul>
+<li>It is preferred that you send an email to <a href="mailto:github3.py@librelist.com">github3.py@librelist.com</a>
+</li>
+<li>You may also contact (via email) the author directly with 
+questions/suggestions/comments</li>
+</ul>
+      </section>
+      <footer>
+        <p><small>Hosted on <a href="https://pages.github.com">GitHub Pages</a> using the Dinky theme</small></p>
+      </footer>
+    </div>
+    <!--[if !IE]><script>fixScale(document);</script><![endif]-->
+		
+  </body>
+</html>
