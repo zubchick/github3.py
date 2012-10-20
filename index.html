@@ -32,10 +32,11 @@
       <section>
         <h1>github3.py</h1>
 
-<p>.. image::
-    <a href="https://secure.travis-ci.org/sigmavirus24/github3.py.png?branch=mock">https://secure.travis-ci.org/sigmavirus24/github3.py.png?branch=mock</a>
-    :alt: Build Status
-    :target: <a href="http://travis-ci.org/sigmavirus24/github3.py">http://travis-ci.org/sigmavirus24/github3.py</a></p>
+<p> <a href="https://travis-ci.org/sigmavirus24/github3.py">
+    <img 
+    src="https://secure.travis-ci.org/sigmavirus24/github3.py.png?branch=mock"
+        alt="Build Status"/> </a>
+    </p>
 
 <p>github3.py is a comprehensive, actively developed and extraordinarily stable 
 wrapper around the GitHub API (v3).</p>
@@ -44,46 +45,42 @@ wrapper around the GitHub API (v3).</p>
 
 <h2>Installation</h2>
 
-<p>::</p>
-
 <pre><code>$ pip install github3.py
 </code></pre>
 
 <h2>Dependencies</h2>
 
 <ul>
-<li>requests_  by Kenneth Reitz</li>
-</ul><p>.. _requests: <a href="https://github.com/kennethreitz/requests">https://github.com/kennethreitz/requests</a></p>
+<li><a href="https://github.com/kennethreitz/requests"> requests</a> by 
+Kenneth Reitz</li>
+</ul>
 
 <p>Testing</p>
 
+<ul>
+<li><a href="https://github.com/garybernhardt/expecter">expecter</a> by Gary 
+Bernhardt</li>
+<li><a href="http://mock.readthedocs.org/en/latest/">mock</a> by Michael 
+Foord</li>
+<li><a href="http://nedbatchelder.com/code/coverage/">coverage</a> by Ned 
+Batchelder</li>
+</ul>
+
+<h2>License</h2>
+
+<p>Modified BSD license.</p>
+
+<h2>Examples</h2>
+
+<p>
+See the docs for more detailed <a 
+href="http://github3py.readthedocs.org/en/latest/index.html#more-examples">
+examples</a>.
+</p>
+
+<p>Create a git blob:</p>
+
 <pre><code>
-- expecter_ by Gary Bernhardt
-- mock_ by Michael Foord
-- coverage_ by Ned Batchelder
-
-.. _expecter: https://github.com/garybernhardt/expecter
-.. _coverage: http://nedbatchelder.com/code/coverage/
-.. _mock: http://mock.readthedocs.org/en/latest/
-
-License
--------
-
-Modified BSD license_
-
-.. _license:
-
-Examples
---------
-
-See the docs_ for more detailed examples.
-
-.. _docs: http://github3py.readthedocs.org/en/latest/index.html#more-examples
-
-Create a git blob:
-
-::
-
   &gt;&gt;&gt; from github3 import login
   &gt;&gt;&gt; g = login(username, password)
   &gt;&gt;&gt; repo = g.repository('sigmavirus24', 'Todo.txt-python')
@@ -97,11 +94,11 @@ Create a git blob:
   u'Testing blob creation'
   &gt;&gt;&gt; blob.encoding
   u'base64'
+</code></pre>
 
-Create a tag on a commit:
+<p>Create a tag on a commit:</p>
 
-::
-
+<pre><code>
   &gt;&gt;&gt; from github3 import login
   &gt;&gt;&gt; g = login(username, password)
   &gt;&gt;&gt; repo = g.repository('sigmavirus24', 'github3.py')
@@ -112,18 +109,14 @@ Create a tag on a commit:
   u'24ea44d302c6394a0372dcde8fd8aed899c0034b'
   &gt;&gt;&gt; tag.object.type
   u'commit'
-
-Testing
 </code></pre>
 
-<p>::</p>
+<p>Testing</p>
 
 <pre><code>make tests
 </code></pre>
 
 <p>These coverage numbers are from the old-style tests and still apply to master.</p>
-
-<p>::</p>
 
 <pre><code>Name                 Stmts   Miss  Cover
 ----------------------------------------
