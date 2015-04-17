@@ -19,7 +19,9 @@ def requires_2fa(response):
 
 class GitHubSession(requests.Session):
     auth = None
-    __attrs__ = requests.Session.__attrs__ + ['base_url', 'two_factor_auth_cb']
+    __attrs__ = requests.Session.__attrs__ + [
+        'base_url', 'two_factor_auth_cb', 'request_counter',
+    ]
 
     def __init__(self):
         super(GitHubSession, self).__init__()
